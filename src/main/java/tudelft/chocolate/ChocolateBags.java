@@ -2,12 +2,25 @@ package tudelft.chocolate;
 
 public class ChocolateBags {
 
+    /**
+     * Рассчитывает количество единиц упаковки для заданного в килограмма количества шоколада при условии,
+     * что сначала будут заполняться большие единицы упаковки, а затем малые.
+     *
+     * @param small количество имеющихся единиц упаковки для шоколада весом 1 кг
+     * @param big количество имеющихся единиц упаковки для шоколада весом 5 кг
+     * @param total общий вес шоколада, который необходимо упаковать
+     * @return количество имеющихся необходимых единиц упаковки для шоколада весом 1 кг,
+     *         -1, если упаковок недостаточно
+     */
     public int calculate(int small, int big, int total) {
         int maxBigBoxes = total / 5;
-        int bigBoxesWeCanUse = maxBigBoxes < big ? maxBigBoxes : big;
+        int bigBoxesWeCanUse = Math.min(maxBigBoxes, big);
         total -= (bigBoxesWeCanUse * 5);
-
-        if(small < total)
+        /*Поскольку малая единица упаковки содержит 1 кг шоколада,
+          можно сравнивать оставшийся общий вес с количеством таких упаковок*/
+        /*Оператор с ошибкой - если total=small, то упаковок также хватит*/
+//        if (small <= total)
+        if (small < total)
             return -1;
         return total;
 

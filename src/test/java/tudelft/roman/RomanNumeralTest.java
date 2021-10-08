@@ -30,7 +30,12 @@ public class RomanNumeralTest {
     @Test
     public void numberWithAndWithoutSubtractiveNotation() {
         RomanNumeral roman = new RomanNumeral();
-        int result = roman.convert("XLIV");
-        Assertions.assertEquals(44, result);
+//        int result = roman.convert("XLIV");
+//        Assertions.assertEquals(44, result);
+        /*Wrong number produce Assertion Error*/
+//        int result = roman.convert("IIV");
+        /*Wrong number passed through the test*/
+        int result = roman.convert("XIVIIII");
+        Assertions.assertEquals(18, result);
     }
 }
