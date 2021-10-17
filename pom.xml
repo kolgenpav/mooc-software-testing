@@ -52,6 +52,28 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.6</version>
+                <configuration>
+                    <skip>false</skip>
+<!--                    <check/>-->
+                    <rules>
+                        <rule>
+                            <element>CLASS</element>
+                            <excludes>
+                                <exclude>*Test</exclude>
+                            </excludes>
+                            <limits>
+                                <limit>
+                                    <counter>LINE</counter>
+                                    <value>COVEREDRATIO</value>
+                                    <minimum>0.50</minimum>
+                                </limit>
+                            </limits>
+                        </rule>
+                    </rules>
+<!--                    <systemPropertyVariables>-->
+<!--                        <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>-->
+<!--                    </systemPropertyVariables>-->
+                </configuration>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
@@ -65,7 +87,25 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/jacoco</outputDirectory>
+                        </configuration>
                     </execution>
+<!--                    <execution>-->
+<!--                        <id>check</id>-->
+<!--                        <goals>-->
+<!--                            <goal>check</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <check>-->
+<!--                                <instructionRatio>100</instructionRatio>-->
+<!--                                <branchRatio>95</branchRatio>-->
+<!--                                <lineRatio>90</lineRatio>-->
+<!--                                <methodRatio>90</methodRatio>-->
+<!--                                <classRatio>90</classRatio>-->
+<!--                            </check>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
                     <execution>
                         <id>post-unit-test</id>
                         <phase>test</phase>
@@ -81,13 +121,7 @@
                         </configuration>
                     </execution>
                 </executions>
-<!--                <configuration>
-                    <systemPropertyVariables>
-                        <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
-                    </systemPropertyVariables>
-                </configuration>  -->
             </plugin>
-
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
