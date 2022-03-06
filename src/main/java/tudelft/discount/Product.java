@@ -2,9 +2,9 @@ package tudelft.discount;
 
 public class Product {
 
-    private String name;
+    private final String name;
     private double price;
-    private String category;
+    private final String category;
 
     public Product (String name, double price, String category) {
         this.name = name;

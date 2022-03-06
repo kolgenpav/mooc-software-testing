@@ -1,8 +1,10 @@
 package tudelft.mirror;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Mirror {
 
-    public String mirrorEnds(String string) {
+    public String mirrorEnds(@NotNull String string) {
         String mirror = "";
 
         int begin = 0;
@@ -15,7 +17,8 @@ public class Mirror {
                 break;
             }
         }
-
-        return begin == end ? string : mirror;
+         /*The BUG founded for odd (нечетной) string length and non-mirror strings*/
+//        return begin == end ? string : mirror;
+        return mirror.isEmpty() ? string : mirror;
     }
 }
