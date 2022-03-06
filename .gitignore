@@ -4,6 +4,9 @@ mymemdb*
 *.iml
 .idea
 .idea/*
+javadoc/
+reports/
+target/
 
 # Created by https://www.gitignore.io/api/intellij
 
