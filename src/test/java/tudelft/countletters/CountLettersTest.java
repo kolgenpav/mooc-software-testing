@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 public class CountLettersTest {
 
-    @Disabled
     @Test
     public void multipleMatchingWordsS() {
         int words = new CountLetters().count("cats|dogs");
